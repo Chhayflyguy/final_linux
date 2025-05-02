@@ -960,7 +960,8 @@
 
         #loginBox {
       display: none; /* Hidden initially */
-      position: fixed;
+      position: absolute;
+      z-index: 1000;
       top: 30%;
       left: 50%;
       transform: translate(-50%, -50%);
