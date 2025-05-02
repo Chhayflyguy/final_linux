@@ -958,6 +958,41 @@
             margin: 10px 0;
         }
 
+        #loginBox {
+      display: none; /* Hidden initially */
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    #loginBox input {
+      width: 90%;
+      padding: 8px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    #loginBox button {
+      padding: 8px 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    #loginBox img {
+      width: 60px;
+      margin-bottom: 15px;
+    }
+
     </style>
 </head>
 
@@ -980,10 +1015,28 @@
                         class="nav-link {{ request()->routeIs('dashboard.index') ? 'active' : '' }}">
                         {{ __('Dashboard') }}
                     </a>
-                    <a href="{{ route('index') }}" class="nav-link {{ request()->routeIs('index') ? 'active' : '' }}">
-                        {{ __('Admin') }}
-                    </a>
+                   
+                    <button onclick="showLogin()">Admin</button>
                 </div>
+
+
+                <div id="loginBox">
+  <img src="https://via.placeholder.com/60" alt="Logo" />
+  <h3>Login</h3>
+  <form action="{{ route('adminusers') }}" method="POST">
+    @csrf
+    <input type="text" id="username" placeholder="Username" name="name"><br>
+    <input type="password" id="password" placeholder="Password" name="password"><br>
+    <button type="submit">Login</button>
+  </form>
+</div>
+
+
+<script>
+  function showLogin() {
+    document.getElementById('loginBox').style.display = 'block';
+  }
+</script>
 
                 <div class="dropdown-container">
                     <div x-data="{ open: false }" class="relative">

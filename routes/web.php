@@ -18,6 +18,9 @@ Route::post('/cart/checkout', [CartController::class, 'checkoutbuy'])->name('car
 
 Route::get('/Order-Index', [AdminController::class, 'Orderindex'])->name('order.index');
 Route::get('/Admin-Side', [AdminController::class, 'index'])->name('index');
+
+Route::post('/Admin-User', [AdminController::class, 'indexUser'])->name('adminusers');
+
 Route::get('/Admin-category', [AdminController::class, 'indexCategory'])->name('categories.index');
 Route::post('add-Categpry', [AdminController::class , 'addcate'])->name('addCategory');
 Route::post('/store-category', [AdminController::class, 'storeCategory'])->name('categories.store');

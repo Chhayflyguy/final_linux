@@ -10,6 +10,26 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
+
+    public function indexUser(Request $request)
+    {
+        // dd($request->all());
+
+        // Validate the incoming request
+        $request->validate([
+            'name' => 'required|string',
+            'password' => 'required|string',
+        ]);
+
+        if($request->name == 'admin' && $request->password == 'admin') {
+            // Redirect to the admin page
+            return view('adminside');
+        } else {
+            // Redirect back with an error message
+            return redirect()->back()->with('error', 'Invalid credentials');
+        }
+        return redirect()->back();
+    }
     public function Orderindex()
     {
         $orders = Order::all();
